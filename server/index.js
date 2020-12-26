@@ -3,18 +3,19 @@ import nodemon from "nodemon";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-const Connection_URL = Connection_URL;
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(Connection_URL, {
+  .connect(process.env.REACT_APP_DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -22,6 +23,6 @@ mongoose
   .then(() =>
     app.listen(PORT, () => console.log(`server running on port : ${PORT}`))
   )
-  .catch((error) => console.log(err));
+  .catch((err) => console.log(err.message));
 
-mongoose.set("useFindandModify", false);
+mongoose.set("useFindAndModify", false);
