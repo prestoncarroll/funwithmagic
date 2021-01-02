@@ -72,6 +72,16 @@ const Form = () => {
             }
           />
         </div>
+        <Button
+          className={classes.buttonSubmit}
+          variant="contained"
+          color="primary"
+          size="large"
+          type="submit"
+          fullWidth
+        >
+          submit
+        </Button>
       </form>
     </Paper>
   );
