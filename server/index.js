@@ -1,5 +1,5 @@
 import express from "express";
-import nodemon from "nodemon";
+
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/posts", postRoutes);
+
+app.get("/", (req, res) => {
+  res.send("hello to memories api");
+});
 
 const PORT = process.env.PORT || 5000;
 
